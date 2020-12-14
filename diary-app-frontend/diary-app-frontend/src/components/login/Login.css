@@ -1,0 +1,42 @@
+.login-box {
+  background-color: rgb(248, 242, 242);
+  max-width: 70%;
+  width: 60%;
+  height: 60%;
+  max-height: 80%;
+  display: inline-flex;
+  border-radius: 10px;
+}
+
+.center-screen {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+}
+
+.root {
+  min-width: 250px;
+}
+
+.bg {
+  width: auto;
+  height: 100vh;
+  background-color: rgb(248, 242, 242);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background-image: url(https://images.unsplash.com/photo-1466781783364-36c955e42a7f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80); */
+}
+
+.login-banner {
+  border-bottom-right-radius: 14px;
+  border-top-right-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../../img/undraw_reading_time_gvg0.png);
+}
+
+.btn-color {
+  background-color: #2f2e41;
+}
