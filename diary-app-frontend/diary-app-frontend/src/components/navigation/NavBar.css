@@ -1,0 +1,11 @@
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.nav {
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
+}
