@@ -1,0 +1,66 @@
+.sideNav {
+  float: left;
+  height: 100%;
+  width: 200px;
+  z-index: 1;
+  /* top: 0;
+  left: 0; */
+  padding-top: 50px;
+  /* box-shadow: 0.3px 0px 7px black; */
+  font-weight: 300;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 30px 0px 0px 30px;
+}
+
+.sideNav a {
+  padding: 20px;
+  text-decoration: none;
+  font-weight: 650;
+  font-size: 13px;
+  color: #ffffff;
+  display: block; /*Displayed like paragraph*/
+  transition: 0.2s;
+  text-align: center;
+}
+
+.sideNav p {
+  text-decoration: none;
+  font-size: 15px;
+  color: #ded9e1;
+  display: block; /*Displayed like paragraph*/
+  transition: 0.2s;
+  text-align: center;
+}
+
+.sideNav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.profile_img {
+  padding: 0px 10px 10px 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 70px;
+  object-fit: contain;
+}
+
+.nav_divider_top {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 83%;
+  height: 0.2px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+}
+
+.nav_divider_bottom {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 83%;
+  height: 0.2px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20%;
+}

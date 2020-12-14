@@ -1,0 +1,14 @@
+.music_container {
+  height: 100%;
+  width: auto;
+  overflow: hidden;
+  background-color: #fff;
+  /* box-shadow: 0.3px 0px 7px black; */
+  /* background: rgba(0, 0, 0, 0.3); */
+  border-radius: 0px 30px 30px 0px;
+  overflow-y: scroll;
+}
+
+.music_container::-webkit-scrollbar {
+  display: none;
+}
