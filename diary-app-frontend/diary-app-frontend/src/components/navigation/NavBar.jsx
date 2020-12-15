@@ -7,6 +7,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import Box from "@material-ui/core/Box";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
   root: {
@@ -17,10 +18,15 @@ const useStyles = makeStyles({
 export default function LabelBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState("recents");
+  let history = useHistory();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  function handleLogoutClick() {
+    history.push("/");
+  }
 
   return (
     <Box
@@ -48,6 +54,7 @@ export default function LabelBottomNavigation() {
         <BottomNavigationAction
           label="Sign Out"
           value="folder"
+          onClick={handleLogoutClick}
           icon={<ExitToAppIcon />}
         />
       </BottomNavigation>

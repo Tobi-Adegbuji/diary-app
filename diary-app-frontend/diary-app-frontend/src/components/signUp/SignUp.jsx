@@ -114,7 +114,12 @@ class SignUp extends React.Component {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <Button variant="outlined" color="primary" type="submit">
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      type="submit"
+                      disabled="true"
+                    >
                       Complete
                     </Button>
                   </Grid>
