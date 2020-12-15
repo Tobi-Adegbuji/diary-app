@@ -10,9 +10,9 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <NavBar className="bottom" />
+      <div className="bg">
         <AppContainer />
+        <NavBar />
       </div>
     );
   }
