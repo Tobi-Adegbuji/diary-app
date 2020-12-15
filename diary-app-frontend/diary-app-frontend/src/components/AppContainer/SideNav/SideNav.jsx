@@ -22,6 +22,7 @@ function SideNav() {
       <div className="nav_divider_top"></div>
       <Button onClick={() => handleNewDiaryClick()}>Add Diary</Button>
       <Diary />
+      <Diary />
 
       <Modal
         className="Modal"

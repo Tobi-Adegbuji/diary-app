@@ -1,0 +1,14 @@
+.upload_image {
+  width: 75%;
+  height: auto;
+  background-image: url(../../../../img/undraw_upload_87y9.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.center_no_selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
