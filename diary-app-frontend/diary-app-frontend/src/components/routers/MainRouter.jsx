@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "../login/Login";
 import Home from "../home/Home";
+import SignUp from "../signUp/SignUp";
 
 class MainRouter extends Component {
   render() {
@@ -12,7 +13,7 @@ class MainRouter extends Component {
             <Route exact path="/">
               <Login />
             </Route>
-            {/* <Route path="/signup" component={SignUp}/> */}
+            <Route path="/signup" component={SignUp} />
             <Route path="/home/:id" component={Home} />
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
