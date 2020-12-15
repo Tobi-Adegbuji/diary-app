@@ -7,7 +7,7 @@ class Diary extends React.Component {
     super(props);
     this.state = {
       title: "Example",
-      entry: "example",
+      entryCount: "Entries: 0",
     };
   }
 
@@ -16,7 +16,7 @@ class Diary extends React.Component {
       <div>
         <Box boxShadow={4} className="diary">
           <Typography variant="h6">{this.state.title}</Typography>
-          <Typography variant="p">{this.state.entry}</Typography>
+          <Typography variant="p">{this.state.entryCount}</Typography>
         </Box>
       </div>
     );

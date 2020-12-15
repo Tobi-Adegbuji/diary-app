@@ -35,7 +35,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="bg">
+      <div className="bg-login">
         <Box boxShadow={4} className="center-screen login-box">
           <Grid container spacing={0}>
             <Grid item xs={4}>

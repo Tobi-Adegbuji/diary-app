@@ -2,11 +2,11 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import FolderIcon from "@material-ui/icons/Folder";
-import RestoreIcon from "@material-ui/icons/Restore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
 import Box from "@material-ui/core/Box";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -28,7 +28,7 @@ export default function LabelBottomNavigation() {
       justifyContent="center"
       alignItems="center"
       display="flex"
-      className="bottom"
+      className="bottom nav"
     >
       <BottomNavigation
         value={value}
@@ -38,25 +38,18 @@ export default function LabelBottomNavigation() {
         <BottomNavigationAction
           label="Diaries"
           value="recents"
-          icon={<RestoreIcon />}
+          icon={<MenuBookIcon />}
         />
         <BottomNavigationAction
-          label="Favorites"
+          label="Settings"
           value="favorites"
-          icon={<FavoriteIcon />}
+          icon={<AccountCircleIcon />}
         />
         <BottomNavigationAction
-          label="Nearby"
-          value="nearby"
-          icon={<LocationOnIcon />}
-        />
-        <BottomNavigationAction
-          label="Folder"
+          label="Sign Out"
           value="folder"
-          icon={<FolderIcon />}
+          icon={<ExitToAppIcon />}
         />
-
-        <a href="#">Sign Out</a>
       </BottomNavigation>
     </Box>
   );
