@@ -1,7 +1,7 @@
 .sideNav {
   float: left;
   height: 100%;
-  width: 200px;
+  width: 25%;
   z-index: 1;
   /* top: 0;
   left: 0; */
@@ -13,7 +13,8 @@
 }
 
 .sideNav a {
-  padding: 20px;
+  margin-top: 20px;
+  padding: 5px;
   text-decoration: none;
   font-weight: 650;
   font-size: 13px;

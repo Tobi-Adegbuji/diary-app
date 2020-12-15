@@ -48,6 +48,7 @@ class Login extends React.Component {
                     <TextField
                       id="outlined-basic"
                       label="Email"
+                      type="email"
                       variant="outlined"
                       onChange={this.handleChange}
                     />
@@ -57,6 +58,7 @@ class Login extends React.Component {
                       id="outlined-basic"
                       label="Password"
                       variant="outlined"
+                      type="password"
                       onChange={this.handleChange}
                     />
                   </Grid>
