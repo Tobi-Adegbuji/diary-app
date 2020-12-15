@@ -55,7 +55,7 @@ class DiaryForm extends React.Component {
               </Grid>
               <Grid item>
                 <Button variant="outlined" color="primary">
-                  Submit
+                  Create
                 </Button>
               </Grid>
             </Grid>

@@ -7,14 +7,17 @@ import Grid from "@material-ui/core/Grid";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 
-import "./Login.css";
+import "./SignUp.css";
 
-class Login extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
+      email: "",
+      password1: "",
+      password2: "",
+      firstName: "",
+      lastName: "",
       user: {},
     };
     this.handleLogin = this.handleLogin.bind(this);
@@ -31,13 +34,13 @@ class Login extends React.Component {
     event.preventDefault();
     console.log("Clicked");
     console.log(this.state.username);
-    this.props.history.push(`/home`);
+    this.props.history.push(`/login`);
   }
 
   render() {
     return (
       <div className="bg-login">
-        <Box boxShadow={4} className="center-screen login-box">
+        <Box boxShadow={4} className="center-screen signUp-box">
           <Grid container spacing={0}>
             <Grid
               container
@@ -60,17 +63,35 @@ class Login extends React.Component {
                   direction="column"
                   alignItems="center"
                   justify="center"
-                  spacing={7}
+                  spacing={3}
                 >
-                  <Grid item xs={12} className="logo">
-                    <div className="div-size"></div>
+                  <Grid item xs={12}>
+                    <Typography variant="h5">Registration</Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      id="outlined-basic"
+                      label="First Name"
+                      type="text"
+                      variant="filled"
+                      onChange={this.handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Last Name"
+                      type="text"
+                      variant="filled"
+                      onChange={this.handleChange}
+                    />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       id="outlined-basic"
                       label="Email"
                       type="email"
-                      variant="outlined"
+                      variant="filled"
                       onChange={this.handleChange}
                     />
                   </Grid>
@@ -78,28 +99,35 @@ class Login extends React.Component {
                     <TextField
                       id="outlined-basic"
                       label="Password"
-                      variant="outlined"
+                      variant="filled"
+                      type="password"
+                      onChange={this.handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Retype Password"
+                      variant="filled"
                       type="password"
                       onChange={this.handleChange}
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <Button variant="outlined" color="primary" type="submit">
-                      Sign In
+                      Complete
                     </Button>
                   </Grid>
                   <Grid item xs={12}>
-                    <Button variant="contained" color="primary">
-                      <Link className="link-style" to="/signup">
-                        Register
-                      </Link>
-                    </Button>
+                    <Link to="/" className="signup-link-style">
+                      Already have an account?
+                    </Link>
                   </Grid>
                 </Grid>
               </form>
             </Grid>
 
-            <Grid item xs={8} className="login-banner"></Grid>
+            <Grid item xs={8} className="signUp-banner"></Grid>
           </Grid>
         </Box>
       </div>
@@ -107,4 +135,4 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(Login);
+export default withRouter(SignUp);
