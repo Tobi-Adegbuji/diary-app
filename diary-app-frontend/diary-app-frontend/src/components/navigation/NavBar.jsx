@@ -18,6 +18,7 @@ const useStyles = makeStyles({
 export default function LabelBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState("recents");
+
   let history = useHistory();
 
   const handleChange = (event, newValue) => {

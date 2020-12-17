@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,15 @@ public class AuthServiceImpl implements AuthService{
     private final AuthRepo userRepo;
     private final AuthenticationProvider authenticationProvider;
     private final JwtCreator jwtCreator;
+
+    @Override
+    public User retrieveUser(String authorization) {
+        String token = "";
+        if(authorization.startsWith("Bearer "))
+             token = authorization.substring(7);
+        return userRepo.findUserByUsername(jwtCreator.getUsernameFromToken(token))
+                .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
+    }
 
     //Method used to register a new user
     @Override

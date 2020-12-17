@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import React, { useState, useEffect } from "react";
 import DiaryForm from "./diaryForm/DiaryForm";
 
-function SideNav() {
+function SideNav(props) {
   const [clickedNewDiary, setClickedNewDiary] = useState(false);
 
   function handleNewDiaryClick() {
@@ -18,7 +18,7 @@ function SideNav() {
         className="profile_img"
         src="https://www.pngkey.com/png/full/73-730477_first-name-profile-image-placeholder-png.png"
       />
-      <p>John Doe</p>
+      <p>{props.firstName}</p>
       <div className="nav_divider_top"></div>
       <Button onClick={() => handleNewDiaryClick()}>Add Diary</Button>
       <Diary />

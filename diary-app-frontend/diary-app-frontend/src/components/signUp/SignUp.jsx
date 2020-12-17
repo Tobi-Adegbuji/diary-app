@@ -43,7 +43,13 @@ class SignUp extends React.Component {
     };
 
     console.log(signUpData);
-    UserDataService.registerUser(signUpData);
+    UserDataService.registerUser(signUpData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     this.props.history.push(`/login`);
   }
 
@@ -123,7 +129,7 @@ class SignUp extends React.Component {
                       id="outlined-basic"
                       label="Password"
                       variant="filled"
-                      name="passwords"
+                      name="password"
                       type="password"
                       onChange={this.handleChange}
                     />

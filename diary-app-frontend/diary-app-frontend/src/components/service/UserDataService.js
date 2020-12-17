@@ -7,11 +7,11 @@ class UserDataService{
     }
 
     authenticateUser(loginRequest){
-        return axios.post(`http://localhost:8080/api/auth`, loginRequest)
+        return axios.post(`http://localhost:8080/api/auth/sign_in`, loginRequest)
     }
 
-    findUserById(id){
-        return axios.get(`http://localhost:8080/users/${id}`)
+    retrieveUser(config){
+        return axios.get(`http://localhost:8080/api/auth/user`, config)
     }
 
     deleteUserById(id){

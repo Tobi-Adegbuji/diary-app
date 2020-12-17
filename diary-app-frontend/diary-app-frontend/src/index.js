@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Axios from 'axios';
+
+
+Axios.defaults.headers.common["Authorization"] = 'Bearer ' + localStorage.getItem('token');
 
 ReactDOM.render(
   <React.StrictMode>
