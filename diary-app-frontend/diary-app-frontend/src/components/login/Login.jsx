@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
+import UserDataService from "../service/UserDataService";
 
 class Login extends React.Component {
   constructor(props) {
@@ -25,10 +26,20 @@ class Login extends React.Component {
     });
   }
 
+  //Authenticates user credentials and stores JWT in local storage
   handleLogin(event) {
     event.preventDefault();
-    console.log("Clicked");
-    console.log(this.state.username);
+    const loginData = {
+      username: this.state.username,
+      password: this.state.password,
+    };
+    UserDataService.authenticateUser(loginData)
+      .then((response) => {
+        localStorage.setItem("token", response.data.authToken);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     this.props.history.push(`/home`);
   }
 
@@ -66,8 +77,9 @@ class Login extends React.Component {
                   <Grid item xs={12}>
                     <TextField
                       id="outlined-basic"
-                      label="Email"
-                      type="email"
+                      label="Username"
+                      type="text"
+                      name="username"
                       variant="outlined"
                       onChange={this.handleChange}
                     />
@@ -77,6 +89,7 @@ class Login extends React.Component {
                       id="outlined-basic"
                       label="Password"
                       variant="outlined"
+                      name="password"
                       type="password"
                       onChange={this.handleChange}
                     />

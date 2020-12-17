@@ -3,14 +3,12 @@ package dev.tobiadegbuji.diaryappbackend.controller;
 import dev.tobiadegbuji.diaryappbackend.dto.RegisterRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInResponse;
+import dev.tobiadegbuji.diaryappbackend.model.User;
 import dev.tobiadegbuji.diaryappbackend.service.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -32,6 +30,12 @@ public class AuthenticationController {
     @PostMapping("/sign_in")
     public SignInResponse signIn(@RequestBody SignInRequest signInRequest){
         return authService.signIn(signInRequest);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<?> getUser(@RequestHeader("Authorization") String authorization){
+        User user = authService.retrieveUser(authorization);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 }
