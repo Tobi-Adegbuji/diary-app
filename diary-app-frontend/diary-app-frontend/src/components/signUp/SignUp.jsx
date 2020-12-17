@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
+import UserDataService from "../service/UserDataService";
 
 import "./SignUp.css";
 
@@ -13,14 +14,14 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: "",
       email: "",
-      password1: "",
-      password2: "",
+      password: "",
       firstName: "",
       lastName: "",
       user: {},
     };
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -30,10 +31,19 @@ class SignUp extends React.Component {
     });
   }
 
-  handleLogin(event) {
+  handleSignUp(event) {
     event.preventDefault();
-    console.log("Clicked");
-    console.log(this.state.username);
+
+    const signUpData = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password,
+    };
+
+    console.log(signUpData);
+    UserDataService.registerUser(signUpData);
     this.props.history.push(`/login`);
   }
 
@@ -54,7 +64,7 @@ class SignUp extends React.Component {
                 className
                 noValidate
                 autoComplete="off"
-                onSubmit={this.handleLogin}
+                onSubmit={this.handleSignUp}
                 mx
               >
                 <Grid
@@ -73,6 +83,7 @@ class SignUp extends React.Component {
                       id="outlined-basic"
                       label="First Name"
                       type="text"
+                      name="firstName"
                       variant="filled"
                       onChange={this.handleChange}
                     />
@@ -82,6 +93,7 @@ class SignUp extends React.Component {
                       id="outlined-basic"
                       label="Last Name"
                       type="text"
+                      name="lastName"
                       variant="filled"
                       onChange={this.handleChange}
                     />
@@ -91,7 +103,18 @@ class SignUp extends React.Component {
                       id="outlined-basic"
                       label="Email"
                       type="email"
+                      name="email"
                       variant="filled"
+                      onChange={this.handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Username"
+                      variant="filled"
+                      name="username"
+                      type="username"
                       onChange={this.handleChange}
                     />
                   </Grid>
@@ -100,15 +123,7 @@ class SignUp extends React.Component {
                       id="outlined-basic"
                       label="Password"
                       variant="filled"
-                      type="password"
-                      onChange={this.handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      id="outlined-basic"
-                      label="Retype Password"
-                      variant="filled"
+                      name="passwords"
                       type="password"
                       onChange={this.handleChange}
                     />
@@ -118,7 +133,7 @@ class SignUp extends React.Component {
                       variant="outlined"
                       color="primary"
                       type="submit"
-                      disabled="true"
+                      // disabled="true"
                     >
                       Complete
                     </Button>
