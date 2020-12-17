@@ -9,13 +9,14 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.util.Set;
 
-@Entity
-@Table(name = "users")
-@Data
 @Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -36,5 +37,7 @@ public class User {
     private boolean isEnabled;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
+    @OneToMany(cascade = CascadeType.ALL)
+    Set<Diary> diaries;
 
 }

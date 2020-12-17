@@ -2,6 +2,7 @@ package dev.tobiadegbuji.diaryappbackend.controller;
 
 import dev.tobiadegbuji.diaryappbackend.dto.RegisterRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInRequest;
+import dev.tobiadegbuji.diaryappbackend.dto.SignInResponse;
 import dev.tobiadegbuji.diaryappbackend.service.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
 //Controller that deals with all auth related requests
 public class AuthenticationController {
 
@@ -28,10 +29,9 @@ public class AuthenticationController {
     }
 
     //Creates new User
-    @PostMapping("/signIn")
-    public ResponseEntity<?> signIn(@RequestBody SignInRequest signInRequest){
-        authService.signIn(signInRequest);
-        return new ResponseEntity<>("Registration success!", HttpStatus.CREATED);
+    @PostMapping("/sign_in")
+    public SignInResponse signIn(@RequestBody SignInRequest signInRequest){
+        return authService.signIn(signInRequest);
     }
 
 }
