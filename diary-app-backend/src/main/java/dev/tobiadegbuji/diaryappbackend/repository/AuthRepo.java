@@ -5,8 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface UserRepo extends CrudRepository <User, Long> {
+public interface AuthRepo extends CrudRepository<User,Long> {
 
-    Optional<User> findUserById(Long id);
-
+    Optional<User> findUserByUsername(String username);
 }

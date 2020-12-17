@@ -2,12 +2,15 @@ package dev.tobiadegbuji.diaryappbackend.service;
 
 import dev.tobiadegbuji.diaryappbackend.dto.RegisterRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInRequest;
+import dev.tobiadegbuji.diaryappbackend.dto.SignInResponse;
 import dev.tobiadegbuji.diaryappbackend.model.User;
-import dev.tobiadegbuji.diaryappbackend.repository.UserRepo;
+import dev.tobiadegbuji.diaryappbackend.repository.AuthRepo;
 import dev.tobiadegbuji.diaryappbackend.model.UserRole;
+import dev.tobiadegbuji.diaryappbackend.security.JwtCreator;
 import lombok.AllArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,8 +22,9 @@ public class AuthServiceImpl implements AuthService{
 
     //Uses a BCrypt Impl
     private final PasswordEncoder passwordEncoder;
-    private final UserRepo userRepo;
-    private final AuthenticationManager authenticationManager;
+    private final AuthRepo userRepo;
+    private final AuthenticationProvider authenticationProvider;
+    private final JwtCreator jwtCreator;
 
     //Method used to register a new user
     @Override
@@ -41,11 +45,15 @@ public class AuthServiceImpl implements AuthService{
 
     }
 
+
     //Creates UsernamePassword Token and passes it to authenticationManager which calls our UserDetailsService and reads user from database.
     @Override
-    public void signIn(SignInRequest signInRequest) {
-        authenticationManager
+    public SignInResponse signIn(SignInRequest signInRequest) {
+        var authentication = authenticationProvider
                 .authenticate(new UsernamePasswordAuthenticationToken(signInRequest.getUsername(), signInRequest.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+       String token = jwtCreator.generateToken(authentication);
+    return new SignInResponse(token, signInRequest.getUsername());
     }
 
 }
