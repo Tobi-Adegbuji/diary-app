@@ -20,6 +20,7 @@ public class AuthenticationController {
 
 
     //Creates new User
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest){
         authService.register(registerRequest);
@@ -27,11 +28,13 @@ public class AuthenticationController {
     }
 
     //Creates new User
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/sign_in")
     public SignInResponse signIn(@RequestBody SignInRequest signInRequest){
         return authService.signIn(signInRequest);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/user")
     public ResponseEntity<?> getUser(@RequestHeader("Authorization") String authorization){
         User user = authService.retrieveUser(authorization);

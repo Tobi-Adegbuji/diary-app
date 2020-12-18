@@ -1,15 +1,20 @@
-import { Button } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import Diary from "./diary/Diary";
 import "./SideNav.css";
 import Modal from "react-modal";
 import React, { useState, useEffect } from "react";
 import DiaryForm from "./diaryForm/DiaryForm";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 
 function SideNav(props) {
   const [clickedNewDiary, setClickedNewDiary] = useState(false);
 
   function handleNewDiaryClick() {
     setClickedNewDiary(true);
+  }
+
+  function handleCloseModal() {
+    setClickedNewDiary(false);
   }
 
   return (
@@ -20,7 +25,16 @@ function SideNav(props) {
       />
       <p>{props.firstName}</p>
       <div className="nav_divider_top"></div>
-      <Button onClick={() => handleNewDiaryClick()}>Add Diary</Button>
+      <Box textAlign="center" mt={2}>
+        <Button
+          size="small"
+          variant="contained"
+          onClick={() => handleNewDiaryClick()}
+          startIcon={<CloudUploadIcon />}
+        >
+          Add Diary
+        </Button>
+      </Box>
       <Diary />
       <Diary />
 
@@ -35,7 +49,7 @@ function SideNav(props) {
           },
         }}
       >
-        <DiaryForm />
+        <DiaryForm closeModal={handleCloseModal} />
       </Modal>
     </nav>
   );

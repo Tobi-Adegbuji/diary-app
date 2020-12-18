@@ -3,8 +3,32 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "../login/Login";
 import Home from "../home/Home";
 import SignUp from "../signUp/SignUp";
+import UserDataService from "../service/UserDataService";
 
 class MainRouter extends Component {
+  state = {};
+
+  componentDidMount() {
+    // const config = {
+    //   headers: {
+    //     Authorization: "Bearer " + localStorage.getItem("token"),
+    //   },
+    // };
+    UserDataService.retrieveUser()
+      .then((response) => {
+        this.setUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  setUser = (user) => {
+    this.setState({
+      user: user,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -14,9 +38,14 @@ class MainRouter extends Component {
               <Login />
             </Route>
             <Route path="/signup" component={SignUp} />
-            <Route path="/home/:id" component={Home} />
-            <Route path="/home" component={Home} />
-            <Route path="/login" component={Login} />
+            <Route
+              path="/home"
+              component={() => <Home user={this.state.user} />}
+            />
+            <Route
+              path="/login"
+              component={() => <Login setUser={this.setUser} />}
+            />
           </Switch>
         </Router>
       </div>

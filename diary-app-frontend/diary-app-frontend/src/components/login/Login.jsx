@@ -33,9 +33,13 @@ class Login extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
+    console.log(loginData);
+
     UserDataService.authenticateUser(loginData)
       .then((response) => {
+        console.log(response);
         localStorage.setItem("token", response.data.authToken);
+        this.props.setUser(response.data.user);
       })
       .catch((error) => {
         console.log(error);
