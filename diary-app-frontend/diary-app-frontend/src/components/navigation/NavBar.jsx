@@ -26,6 +26,7 @@ export default function LabelBottomNavigation() {
   };
 
   function handleLogoutClick() {
+    localStorage.clear();
     history.push("/");
   }
 
