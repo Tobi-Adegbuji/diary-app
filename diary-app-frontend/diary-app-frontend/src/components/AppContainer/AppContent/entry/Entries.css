@@ -1,0 +1,9 @@
+.entries_container {
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.searchbox {
+  justify-self: center;
+}

@@ -38,7 +38,7 @@ public class JwtCreator {
     }
 
     public boolean validateToken(String token){
-        //If executed without any errors it will return true meaning the token is validated
+        //If executed without any errors it will return true, meaning the token is validated
     Jwts.parser()
                 .setSigningKey(Keys.hmacShaKeyFor(key.getBytes()))
                 .parseClaimsJws(token);

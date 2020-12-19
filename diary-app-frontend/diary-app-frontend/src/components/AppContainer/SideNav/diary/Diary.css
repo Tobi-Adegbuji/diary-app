@@ -4,4 +4,10 @@
   color: white;
   padding: 10px;
   border-radius: 15px;
+  transition: all 0.7s;
+}
+
+.diary:hover {
+  background-color: black;
+  cursor: pointer;
 }

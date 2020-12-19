@@ -5,9 +5,22 @@ import Modal from "react-modal";
 import React, { useState, useEffect } from "react";
 import DiaryForm from "./diaryForm/DiaryForm";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import DiaryDataService from "../../service/DiaryDataService";
+import { withRouter } from "react-router-dom";
 
 function SideNav(props) {
   const [clickedNewDiary, setClickedNewDiary] = useState(false);
+  const [userDiaries, setUserDiaries] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      //await means to wait for response to comeback before doing something.
+      const request = await DiaryDataService.getDiariesByUsername();
+      setUserDiaries(request.data);
+      return request;
+    }
+    fetchData();
+  }, [userDiaries]);
 
   function handleNewDiaryClick() {
     setClickedNewDiary(true);
@@ -35,8 +48,14 @@ function SideNav(props) {
           Add Diary
         </Button>
       </Box>
-      <Diary />
-      <Diary />
+      {userDiaries.map((diary) => (
+        <Diary
+          key={diary.id}
+          name={diary.name}
+          color={diary.color}
+          id={diary.id}
+        />
+      ))}
 
       <Modal
         className="Modal"
@@ -55,4 +74,4 @@ function SideNav(props) {
   );
 }
 
-export default SideNav;
+export default withRouter(SideNav);

@@ -1,0 +1,9 @@
+.card {
+  display: inline-block;
+  max-width: 345px;
+  margin: 10px;
+  transition: all 5s ease-in-out;
+}
+
+.center {
+}

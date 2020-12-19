@@ -1,5 +1,6 @@
 import { Box, Typography } from "@material-ui/core";
 import React from "react";
+import { withRouter } from "react-router-dom";
 import "./Diary.css";
 
 class Diary extends React.Component {
@@ -9,18 +10,27 @@ class Diary extends React.Component {
       title: "Example",
       entryCount: "Entries: 0",
     };
+
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.props.history.push({
+      pathname: `/app/diary/${this.props.id}`,
+      //userId: this.props.location.userId
+    });
   }
 
   render() {
     return (
-      <div>
+      <div onClick={this.onClick}>
         <Box boxShadow={4} className="diary">
-          <Typography variant="h6">{this.state.title}</Typography>
-          <Typography variant="p">{this.state.entryCount}</Typography>
+          <Typography variant="h6">{this.props.name}</Typography>
+          <Typography variant="p">Entries: 0</Typography>
         </Box>
       </div>
     );
   }
 }
 
-export default Diary;
+export default withRouter(Diary);
