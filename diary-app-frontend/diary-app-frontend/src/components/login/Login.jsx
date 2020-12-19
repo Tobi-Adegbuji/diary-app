@@ -1,11 +1,11 @@
 import React from "react";
-import "./Login.css";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
+import "./Login.css";
 import UserDataService from "../service/UserDataService";
 
 class Login extends React.Component {
@@ -44,7 +44,7 @@ class Login extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-    this.props.history.push(`/home`);
+    this.props.history.push(`/app`);
   }
 
   render() {

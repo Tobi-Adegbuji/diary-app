@@ -46,12 +46,18 @@ export default function LabelBottomNavigation() {
         <BottomNavigationAction
           label="Diaries"
           value="recents"
+          onClick={() => {
+            history.push("/app");
+          }}
           icon={<MenuBookIcon />}
         />
         <BottomNavigationAction
           label="Settings"
           value="favorites"
           icon={<AccountCircleIcon />}
+          onClick={() => {
+            history.push("/app/account");
+          }}
         />
         <BottomNavigationAction
           label="Sign Out"

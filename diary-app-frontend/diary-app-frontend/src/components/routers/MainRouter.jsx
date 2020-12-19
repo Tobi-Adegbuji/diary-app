@@ -34,14 +34,16 @@ class MainRouter extends Component {
       <div>
         <Router>
           <Switch>
-            <Route exact path="/">
-              <Login />
-            </Route>
+            <Route
+              exact
+              path="/"
+              component={() => <Login setUser={this.setUser} />}
+            />
             <Route path="/signup" component={SignUp} />
             <Route
-              path="/home"
+              path="/app"
               component={() => <Home user={this.state.user} />}
-            />
+            ></Route>
             <Route
               path="/login"
               component={() => <Login setUser={this.setUser} />}

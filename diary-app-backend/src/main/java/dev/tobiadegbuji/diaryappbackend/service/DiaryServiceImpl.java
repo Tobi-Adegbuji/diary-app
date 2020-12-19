@@ -7,6 +7,8 @@ import dev.tobiadegbuji.diaryappbackend.repository.DiaryRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @Service
 public class DiaryServiceImpl implements DiaryService{
@@ -21,4 +23,11 @@ public class DiaryServiceImpl implements DiaryService{
         user.getDiaries().add(diary);
         authRepo.save(user);
     }
+
+    @Override
+    public Set<Diary> getUserDiaries(String authorization) {
+        User user = authService.retrieveUser(authorization);
+        return user.getDiaries();
+    }
+
 }

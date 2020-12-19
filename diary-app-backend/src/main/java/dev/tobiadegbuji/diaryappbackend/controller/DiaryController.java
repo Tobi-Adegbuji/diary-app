@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/diaries")
@@ -22,5 +24,9 @@ public class DiaryController {
         return new ResponseEntity<>("Successfully created diary!", HttpStatus.OK);
     }
 
-
+    @GetMapping
+    public ResponseEntity<?> getDiariesByUsername(@RequestHeader("Authorization") String authorization){
+       Set<Diary> diarySet = diaryService.getUserDiaries(authorization);
+        return new ResponseEntity<>(diarySet, HttpStatus.OK);
+    }
 }

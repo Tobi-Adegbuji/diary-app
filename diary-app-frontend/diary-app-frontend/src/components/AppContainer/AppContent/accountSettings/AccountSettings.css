@@ -1,0 +1,31 @@
+.account_Settings_container {
+}
+
+.settings_card {
+}
+
+.account_information_settings {
+  margin-left: 10px;
+  margin-top: 45px;
+  margin-right: 45px;
+
+  padding: 45px;
+  height: 100%;
+}
+
+.profile_pic_settings {
+  margin-left: 45px;
+  margin-top: 45px;
+  margin-right: 10px;
+
+  padding: 45px;
+}
+
+.row_height {
+  height: 100%;
+}
+
+.avatar {
+  height: 600px;
+  width: 500px;
+}

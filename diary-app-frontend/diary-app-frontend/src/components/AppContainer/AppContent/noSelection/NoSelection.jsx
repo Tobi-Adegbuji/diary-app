@@ -7,7 +7,7 @@ export default function NoSelection() {
   return (
     <div className="center_no_selection">
       <img src={Image} className="upload_image"></img>
-      <Typography>Please Add or Select a Diary</Typography>
+      <Typography>Please Select a Diary or Add and Select One</Typography>
     </div>
   );
 }
