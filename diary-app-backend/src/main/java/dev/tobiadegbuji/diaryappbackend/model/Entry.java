@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -18,4 +19,5 @@ public class Entry {
     private Long id;
     private String title;
     private String message;
+    private LocalDate dateCreated;
 }

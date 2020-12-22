@@ -3,6 +3,7 @@ package dev.tobiadegbuji.diaryappbackend.controller;
 import dev.tobiadegbuji.diaryappbackend.dto.RegisterRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInResponse;
+import dev.tobiadegbuji.diaryappbackend.dto.UserUpdateRequest;
 import dev.tobiadegbuji.diaryappbackend.model.User;
 import dev.tobiadegbuji.diaryappbackend.service.AuthService;
 import lombok.AllArgsConstructor;
@@ -39,6 +40,20 @@ public class AuthenticationController {
     public ResponseEntity<?> getUser(@RequestHeader("Authorization") String authorization){
         User user = authService.retrieveUser(authorization);
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/user")
+    public ResponseEntity<?> updateUserProfile(@RequestHeader("Authorization") String authorization, @RequestBody UserUpdateRequest userUpdateRequest){
+        User user = authService.updateUser(authorization, userUpdateRequest);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @DeleteMapping("/user")
+    public ResponseEntity<?> deleteUser(@RequestHeader("Authorization") String authorization){
+        authService.deleteUserByUsername(authorization);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

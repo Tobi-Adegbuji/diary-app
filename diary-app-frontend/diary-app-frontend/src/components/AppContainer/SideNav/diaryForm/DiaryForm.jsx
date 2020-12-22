@@ -45,7 +45,7 @@ class DiaryForm extends React.Component {
 
   render() {
     return (
-      <div className="center-screen">
+      <div className="diary-form-center-screen">
         <div className="form-box">
           <form onSubmit={this.handleSubmition}>
             <Grid

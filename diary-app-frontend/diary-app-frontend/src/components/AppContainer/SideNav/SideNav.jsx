@@ -20,7 +20,7 @@ function SideNav(props) {
       return request;
     }
     fetchData();
-  }, [userDiaries]);
+  }, []);
 
   function handleNewDiaryClick() {
     setClickedNewDiary(true);

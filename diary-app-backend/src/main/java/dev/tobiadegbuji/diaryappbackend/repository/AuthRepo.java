@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface AuthRepo extends CrudRepository<User,Long> {
 
     Optional<User> findUserByUsername(String username);
+
 }

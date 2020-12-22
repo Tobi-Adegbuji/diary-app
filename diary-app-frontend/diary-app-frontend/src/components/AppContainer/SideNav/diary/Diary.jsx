@@ -26,7 +26,6 @@ class Diary extends React.Component {
       <div onClick={this.onClick}>
         <Box boxShadow={4} className="diary">
           <Typography variant="h6">{this.props.name}</Typography>
-          <Typography variant="p">Entries: 0</Typography>
         </Box>
       </div>
     );

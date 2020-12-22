@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -17,6 +17,7 @@ import Button from "@material-ui/core/Button";
 
 import "./Entry.css";
 import BookIcon from "@material-ui/icons/Book";
+import { Box, Grid, Modal } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   expand: {
@@ -31,7 +32,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Entry() {
+function Entry(props) {
+  const [deleteModalState, setDeleteModalState] = useState(false);
+
+  const handleDeleteSubmition = () => {
+    // EntryDataService.deleteEntry()
+    //   .then(Window.lo)
+    //   .catch((error) => console.log(error));
+  };
+
   return (
     <Card className="card">
       <CardHeader
@@ -41,27 +50,67 @@ function Entry() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Entry Title"
-        subheader="Created On: "
+        title={props.title}
+        subheader={props.dateCreated}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe,
-          accusamus, assumenda animi eaque dolore impedit sapiente quaerat
-          tenetur officia voluptates similique vitae dolores culpa enim quae
-          provident quasi dignissimos rerum!
+          {props.message}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <Button variant="contained" color="primary">
-            View
-          </Button>
-        </IconButton>
       </CardActions>
+
+      <Modal
+        className="Modal"
+        isOpen={deleteModalState}
+        onRequestClose={() => setDeleteModalState(false)}
+        style={{
+          overlay: {
+            backgroundColor: "white",
+            background: "rgba(0, 0, 0, 0.7)",
+          },
+        }}
+      >
+        <div className="delete-center-screen">
+          <div className="delete-form-box">
+            <form onSubmit={() => handleDeleteSubmition()} className="">
+              <Grid
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+                spacing={3}
+              >
+                <Grid item>
+                  <Box textAlign="center">
+                    <Typography variant="h5">
+                      Are you sure you want to delete your account?
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item>
+                  <Button variant="contained" color="secondary" type="submit">
+                    Delete Account
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => setDeleteModalState(false)}
+                  >
+                    Keep Account
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+        </div>
+      </Modal>
     </Card>
   );
 }

@@ -3,6 +3,7 @@ package dev.tobiadegbuji.diaryappbackend.service;
 import dev.tobiadegbuji.diaryappbackend.dto.RegisterRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInResponse;
+import dev.tobiadegbuji.diaryappbackend.dto.UserUpdateRequest;
 import dev.tobiadegbuji.diaryappbackend.model.User;
 
 public interface AuthService {
@@ -13,4 +14,7 @@ public interface AuthService {
 
     User retrieveUser(String authentication);
 
+    User updateUser(String authorization, UserUpdateRequest userUpdateRequest);
+
+    void deleteUserByUsername(String authorization);
 }

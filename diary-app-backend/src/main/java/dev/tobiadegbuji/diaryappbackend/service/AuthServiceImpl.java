@@ -3,6 +3,7 @@ package dev.tobiadegbuji.diaryappbackend.service;
 import dev.tobiadegbuji.diaryappbackend.dto.RegisterRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInRequest;
 import dev.tobiadegbuji.diaryappbackend.dto.SignInResponse;
+import dev.tobiadegbuji.diaryappbackend.dto.UserUpdateRequest;
 import dev.tobiadegbuji.diaryappbackend.model.User;
 import dev.tobiadegbuji.diaryappbackend.repository.AuthRepo;
 import dev.tobiadegbuji.diaryappbackend.model.UserRole;
@@ -27,6 +28,7 @@ public class AuthServiceImpl implements AuthService{
     private final AuthenticationProvider authenticationProvider;
     private final JwtCreator jwtCreator;
 
+    @Transactional
     @Override
     public User retrieveUser(String authorization) {
         String token = "";
@@ -34,6 +36,26 @@ public class AuthServiceImpl implements AuthService{
              token = authorization.substring(7);
         return userRepo.findUserByUsername(jwtCreator.getUsernameFromToken(token))
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
+    }
+
+    @Transactional
+    @Override
+    public User updateUser(String authorization, UserUpdateRequest userUpdateRequest) {
+        User user = retrieveUser(authorization);
+        System.out.println(userUpdateRequest);
+        System.out.println(user);
+        user.setUsername(userUpdateRequest.getUsername());
+        user.setEmail(userUpdateRequest.getEmail());
+        user.setFirstName(userUpdateRequest.getFirstName());
+        user.setLastName(userUpdateRequest.getLastName());
+        userRepo.save(user);
+        System.out.println(user);
+        return user;
+    }
+
+    @Override
+    public void deleteUserByUsername(String authorization) {
+        userRepo.delete(retrieveUser(authorization));
     }
 
     //Method used to register a new user
@@ -57,6 +79,7 @@ public class AuthServiceImpl implements AuthService{
 
 
     //Creates UsernamePassword Token and passes it to authenticationManager which calls our UserDetailsService and reads user from database.
+    @Transactional
     @Override
     public SignInResponse signIn(SignInRequest signInRequest) {
         var authentication = authenticationProvider
