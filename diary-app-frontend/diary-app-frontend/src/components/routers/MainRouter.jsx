@@ -9,11 +9,6 @@ class MainRouter extends Component {
   state = {};
 
   componentDidMount() {
-    // const config = {
-    //   headers: {
-    //     Authorization: "Bearer " + localStorage.getItem("token"),
-    //   },
-    // };
     UserDataService.retrieveUser()
       .then((response) => {
         this.setUser(response.data);

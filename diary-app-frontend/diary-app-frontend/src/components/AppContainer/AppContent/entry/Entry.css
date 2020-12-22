@@ -1,8 +1,12 @@
 .card {
   display: inline-block;
-  max-width: 345px;
+  width: 250px;
   margin: 10px;
   transition: all 5s ease-in-out;
+}
+
+.message {
+  max-width: 30px;
 }
 
 .center {

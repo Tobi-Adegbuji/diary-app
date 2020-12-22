@@ -8,8 +8,7 @@
   margin-left: 10px;
   margin-top: 45px;
   margin-right: 45px;
-
-  padding: 45px;
+  padding: 3px;
   height: 100%;
 }
 
@@ -28,4 +27,23 @@
 .avatar {
   height: 600px;
   width: 500px;
+}
+
+.delete-form-box {
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.delete-center-screen {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  width: 30%;
+  height: 50%;
 }

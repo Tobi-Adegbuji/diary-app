@@ -8,10 +8,16 @@ import "./Home.css";
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      user: {},
+    };
   }
 
-  componentDidMount() {
+  refreshPage() {
+    window.location.reload(false);
+  }
+
+  componentWillMount() {
     // const config = {
     //   headers: {
     //     Authorization: "Bearer " + localStorage.getItem("token"),
@@ -20,7 +26,6 @@ class Home extends React.Component {
 
     UserDataService.retrieveUser()
       .then((response) => {
-        console.log(response);
         this.setState({
           user: response.data,
         });

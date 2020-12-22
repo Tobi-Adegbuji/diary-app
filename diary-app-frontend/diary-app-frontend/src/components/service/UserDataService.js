@@ -14,8 +14,12 @@ class UserDataService{
         return axios.get(`http://localhost:8080/api/auth/user`, config)
     }
 
-    deleteUserById(id){
-        return axios.delete(`http://localhost:8080/users/${id}`)
+    updateUserDetails(userUpdateRequest){
+        return axios.put(`http://localhost:8080/api/auth/user`, userUpdateRequest)
+    }
+
+    deleteUserByUsername(){
+        return axios.delete(`http://localhost:8080/api/auth/user`)
     }
 
 }

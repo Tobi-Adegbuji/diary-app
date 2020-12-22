@@ -42,7 +42,6 @@ class SignUp extends React.Component {
       password: this.state.password,
     };
 
-    console.log(signUpData);
     UserDataService.registerUser(signUpData)
       .then((response) => {
         console.log(response);
@@ -55,7 +54,7 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="bg-login">
+      <div className="bg-signUp">
         <Box boxShadow={4} className="center-screen signUp-box">
           <Grid container spacing={0}>
             <Grid
@@ -71,7 +70,6 @@ class SignUp extends React.Component {
                 noValidate
                 autoComplete="off"
                 onSubmit={this.handleSignUp}
-                mx
               >
                 <Grid
                   container

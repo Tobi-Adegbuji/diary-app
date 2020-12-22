@@ -10,6 +10,7 @@ class DiaryDataService{
         return axios.get(`http://localhost:8080/api/diaries`)
     }
 
+
 }
 
 export default new DiaryDataService;

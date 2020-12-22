@@ -5,8 +5,10 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import "./Login.css";
 import UserDataService from "../service/UserDataService";
+import Axios from "axios";
+
+import "./Login.css";
 
 class Login extends React.Component {
   constructor(props) {
@@ -33,18 +35,21 @@ class Login extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
-    console.log(loginData);
 
-    UserDataService.authenticateUser(loginData)
+    const instance = Axios.create();
+    //Removing auth header for sign in request
+    delete instance.defaults.headers.common["Authorization"];
+    instance
+      .post("http://localhost:8080/api/auth/sign_in", loginData)
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.authToken);
-        this.props.setUser(response.data.user);
+
+        this.props.history.push(`/app`);
       })
       .catch((error) => {
-        console.log(error);
+        alert("Wrong username or password");
       });
-    this.props.history.push(`/app`);
   }
 
   render() {
@@ -60,13 +65,7 @@ class Login extends React.Component {
               alignItems="center"
               justify="center"
             >
-              <form
-                className
-                noValidate
-                autoComplete="off"
-                onSubmit={this.handleLogin}
-                mx
-              >
+              <form noValidate autoComplete="off" onSubmit={this.handleLogin}>
                 <Grid
                   container
                   spacing={3}
