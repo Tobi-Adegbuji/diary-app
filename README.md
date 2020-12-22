@@ -11,7 +11,7 @@
 - Hibernate ORM
 - Material UI 
 - Java 8 features
-- MySQL Database
+- MySQL RDBMS
 
 ![Diary Register](https://github.com/Tobi-Adegbuji/diary-app/blob/master/about/register.PNG)
 
