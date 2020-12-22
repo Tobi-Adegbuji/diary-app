@@ -13,4 +13,11 @@
 - Java 8 features
 - MySQL Database
 
+![Diary Register](https://github.com/Tobi-Adegbuji/diary-app/blob/master/about/register.PNG)
+
+![Diary App](https://github.com/Tobi-Adegbuji/diary-app/blob/master/about/app.PNG)
+
+![Account Settings](https://github.com/Tobi-Adegbuji/diary-app/blob/master/about/account_settings.PNG)
+
+
 
