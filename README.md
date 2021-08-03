@@ -4,8 +4,8 @@
 **A Site where users can keep their biggest secrets safe.**
 
  Project Tech: 
-- React (Client Side)
-- Spring MVC (Server Side)
+- React 
+- Spring MVC
 - Spring Security
 - JWT Java Library
 - Hibernate ORM
